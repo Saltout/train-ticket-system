@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import InputForm from './Components/InputForm';
-import './style.css';
+import './Styles/style.css';
 
 export default function MyComponentContainer() {
   const [startDestination, setStartDestination] = useState('');
