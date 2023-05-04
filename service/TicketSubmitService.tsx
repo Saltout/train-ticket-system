@@ -7,14 +7,16 @@ export function Handle(values: TicketValues) {
   const destination = values.destinations;
   const passengerType = values.passengerType;
   const cities = getCitiesData();
-  const distance = getDistance('Q36989', 'Q1085').then();
 
-  distance.then((result) => {
-    const price = calculatePrice(result, passengerType);
-    console.log(price);
-  });
+  const start = cities.get(destination.startDestination.toLocaleLowerCase());
+  const end = cities.get(destination.endDestination.toLocaleLowerCase());
 
-  if (cities.indexOf(destination.startDestination.toLocaleLowerCase()) > -1) {
-    console.log('yes');
+  if (start != null && end != null) {
+    const distance = getDistance(start, end);
+
+    distance.then((result) => {
+      const price = calculatePrice(result, passengerType);
+      console.log(price);
+    });
   }
 }
