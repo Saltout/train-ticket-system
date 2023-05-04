@@ -17,6 +17,7 @@ export default function MyComponentContainer() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log('Submit button clicked');
     const ticketValues: TicketValues = {
       destinations: destination,
       passengerType: passengerType,
