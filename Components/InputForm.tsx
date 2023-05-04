@@ -1,21 +1,28 @@
 import * as React from 'react';
+import { PassengerType } from '../Model/PassengerType';
+import { Destinations } from '../Model/Destinations';
 
-export interface DestinationsValues {
-  startDestination: string;
-  endDestination: string;
-}
-
-interface Destinations {
-  values: DestinationsValues;
-  onInputChange: (field: string, value: string) => void;
+interface TicketInputForm {
+  destination: Destinations;
+  passengerType: PassengerType;
+  onInputChange: (field: string, value: string | PassengerType) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
+const passengerTypeOptions = [
+  { value: PassengerType.NONE, label: PassengerType.NONE },
+  { value: PassengerType.STUDENT_UNDER_18, label:  PassengerType.STUDENT_UNDER_18 },
+  { value: PassengerType.STUDENT_ISIC, label: PassengerType.STUDENT_ISIC },
+  { value: PassengerType.SENIOR, label: PassengerType.SENIOR },
+  { value: PassengerType.VZP, label: PassengerType.VZP },
+];
+
 export default function InputFormComponent({
-  values,
+  destination,
+  passengerType,
   onInputChange,
   onSubmit,
-}: Destinations) {
+}: TicketInputForm) {
   return (
     <div>
       <h1>Enter Your Destinations</h1>
@@ -25,7 +32,7 @@ export default function InputFormComponent({
           type="text"
           id="start-destination"
           name="start-destination"
-          value={values.startDestination}
+          value={destination.startDestination}
           onChange={(e) => onInputChange('startDestination', e.target.value)}
         />
         <br />
@@ -36,9 +43,25 @@ export default function InputFormComponent({
           type="text"
           id="end-destination"
           name="end-destination"
-          value={values.endDestination}
+          value={destination.endDestination}
           onChange={(e) => onInputChange('endDestination', e.target.value)}
         />
+        <br />
+        <br />
+
+        <label>Passenger Type:</label>
+        <select
+          value={passengerType}
+          onChange={(e) =>
+            onInputChange('passangerType', e.target.value as PassengerType)
+          }
+        >
+          {passengerTypeOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
         <br />
         <br />
 
