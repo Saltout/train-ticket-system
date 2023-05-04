@@ -4,10 +4,9 @@ import { getCitiesData } from '../Data/Data';
 export function Handle(values: TicketValues) {
   const destination = values.destinations;
   const passenferType = values.passengerType;
+  const cities = getCitiesData();
 
-  const fileData = getCitiesData();
-  console.log(destination.startDestination);
-  console.log(destination.endDestination);
-  console.log(passenferType);
-  console.log(fileData);
+  if (cities.indexOf(destination.startDestination.toLocaleLowerCase()) > -1) {
+    console.log('yes');
+  }
 }

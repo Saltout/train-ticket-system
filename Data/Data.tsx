@@ -1,19 +1,19 @@
-export function getCitiesData() {
-  return {
-    cities: [
-      'Praha',
-      'Brno',
-      'Ostrava',
-      'Plzeň',
-      'Liberec',
-      'Olomouc',
-      'Hradec Králové',
-      'Ústí nad Labem',
-      'Pardubice',
-      'Zlín',
-      'České Budějovice',
-      'Jihlava',
-      'Karlovy vary',
-    ],
-  };
+export interface City {}
+
+export function getCitiesData(): string[] {
+  return [
+    'praha',
+    'brno',
+    'ostrava',
+    'plzeň',
+    'liberec',
+    'olomouc',
+    'hradec Králové',
+    'ústí nad Labem',
+    'pardubice',
+    'zlín',
+    'české Budějovice',
+    'jihlava',
+    'karlovy vary',
+  ];
 }
