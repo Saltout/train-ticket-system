@@ -10,11 +10,11 @@ interface TicketInputForm {
 }
 
 const passengerTypeOptions = [
-  { value: PassengerType.NONE, label: PassengerType.NONE },
-  { value: PassengerType.STUDENT_UNDER_18, label:  PassengerType.STUDENT_UNDER_18 },
-  { value: PassengerType.STUDENT_ISIC, label: PassengerType.STUDENT_ISIC },
-  { value: PassengerType.SENIOR, label: PassengerType.SENIOR },
-  { value: PassengerType.VZP, label: PassengerType.VZP },
+  { value: PassengerType.NONE, label: 'None' },
+  { value: PassengerType.STUDENT_UNDER_18, label: 'Student <18' },
+  { value: PassengerType.STUDENT_ISIC, label: 'Student ISIC' },
+  { value: PassengerType.SENIOR, label: 'Senior' },
+  { value: PassengerType.VZP, label: 'VZP' },
 ];
 
 export default function InputFormComponent({
@@ -53,7 +53,7 @@ export default function InputFormComponent({
         <select
           value={passengerType}
           onChange={(e) =>
-            onInputChange('passangerType', e.target.value as PassengerType)
+            onInputChange('passengerType', e.target.value as PassengerType)
           }
         >
           {passengerTypeOptions.map((option) => (
