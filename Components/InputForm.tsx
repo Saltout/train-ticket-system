@@ -1,15 +1,18 @@
 import * as React from 'react';
 
-interface Destinations {
+export interface DestinationsValues {
   startDestination: string;
   endDestination: string;
+}
+
+interface Destinations {
+  values: DestinationsValues;
   onInputChange: (field: string, value: string) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export default function InputFormComponent({
-  startDestination,
-  endDestination,
+  values,
   onInputChange,
   onSubmit,
 }: Destinations) {
@@ -22,7 +25,7 @@ export default function InputFormComponent({
           type="text"
           id="start-destination"
           name="start-destination"
-          value={startDestination}
+          value={values.startDestination}
           onChange={(e) => onInputChange('startDestination', e.target.value)}
         />
         <br />
@@ -33,7 +36,7 @@ export default function InputFormComponent({
           type="text"
           id="end-destination"
           name="end-destination"
-          value={endDestination}
+          value={values.endDestination}
           onChange={(e) => onInputChange('endDestination', e.target.value)}
         />
         <br />

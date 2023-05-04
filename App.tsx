@@ -1,29 +1,29 @@
 import * as React from 'react';
 import { useState } from 'react';
 import InputForm from './Components/InputForm';
+import { DestinationsValues } from './Components/InputForm';
+import { Handle } from './service/TicketSubmitService';
 import './Styles/style.css';
 
 export default function MyComponentContainer() {
-  const [startDestination, setStartDestination] = useState('');
-  const [endDestination, setEndDestination] = useState('');
+  const [values, setValues] = useState<DestinationsValues>({
+    startDestination: '',
+    endDestination: '',
+  });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Start Destination:', startDestination);
-    console.log('End Destination:', endDestination);
-    // Here you can perform any other processing with the form data
+    Handle(values);
   };
 
   return (
     <InputForm
-      startDestination={startDestination}
-      endDestination={endDestination}
+      values={values}
       onInputChange={(field, value) => {
-        if (field === 'startDestination') {
-          setStartDestination(value);
-        } else if (field === 'endDestination') {
-          setEndDestination(value);
-        }
+        setValues((prevState) => ({
+          ...prevState,
+          [field]: value,
+        }));
       }}
       onSubmit={handleSubmit}
     />
