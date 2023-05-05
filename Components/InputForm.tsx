@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PassengerType } from '../Model/PassengerType';
 import { Destinations } from '../Model/Destinations';
+import './Styles/InputFormStyle.css';
 
 interface TicketInputForm {
   destination: Destinations;
@@ -24,7 +25,7 @@ export default function InputFormComponent({
   onSubmit,
 }: TicketInputForm) {
   return (
-    <div>
+    <div className="inputForm-class">
       <h1>Enter Your Destinations</h1>
       <form onSubmit={onSubmit}>
         <label>Start Destination:</label>
