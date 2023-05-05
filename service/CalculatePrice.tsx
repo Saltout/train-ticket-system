@@ -1,6 +1,7 @@
 import { PassengerType } from '../Model/PassengerType';
+import { getPricePerKilometer } from '../Data/PriceData';
 
-const priceForKilometer = 3;
+const priceForKilometer = getPricePerKilometer();
 const milesConvertor = 1.60934;
 
 export function calculatePrice(

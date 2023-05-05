@@ -9,8 +9,8 @@ import './Styles/style.css';
 
 export default function MyComponentContainer() {
   const [destination, setDestination] = useState<Destinations>({
-    startDestination: '',
-    endDestination: '',
+    startDestination: 'pardubice',
+    endDestination: 'praha',
   });
 
   const [passengerType, setPassengerType] = useState(PassengerType.NONE);
