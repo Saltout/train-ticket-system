@@ -8,10 +8,10 @@ export function renderTicket(ticket: Ticket): JSX.Element {
       <h2>Ticket</h2>
       <div className="ticket-info">
         <p>
-          <span>Start:</span> {formatOutput(ticket.start)}
+          <span>From:</span> {formatOutput(ticket.start)}
         </p>
         <p>
-          <span>End:</span> {formatOutput(ticket.end)}
+          <span>To:</span> {formatOutput(ticket.end)}
         </p>
       </div>
       <p>
