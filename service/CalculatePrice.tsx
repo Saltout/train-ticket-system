@@ -16,5 +16,5 @@ export function calculatePrice(
     price = price * 0.5;
   }
 
-  return price;
+  return Math.round(price);
 }

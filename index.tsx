@@ -13,7 +13,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/MainPage" element={<MainPage />} />
         <Route path="/TicketPage" element={<TicketPage />} />
       </Routes>
     </Router>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import InputForm from './Components/InputForm';
 import TicketPageButton from './Components/TicketPageButtonComponent';
 import { Destinations } from './Model/Destinations';

@@ -15,7 +15,7 @@ const passengerTypeOptions = [
   { value: PassengerType.STUDENT_UNDER_18, label: 'Student <18' },
   { value: PassengerType.STUDENT_ISIC, label: 'Student ISIC' },
   { value: PassengerType.SENIOR, label: 'Senior' },
-  { value: PassengerType.VZP, label: 'VZP' },
+  { value: PassengerType.ZTP, label: 'ZTP' },
 ];
 
 export default function InputFormComponent({
