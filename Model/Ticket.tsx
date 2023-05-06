@@ -4,6 +4,6 @@ export interface Ticket {
   start: string;
   end: string;
   price: number;
-  travelTime: Date;
+  travelTime: string;
   discount: PassengerType;
 }

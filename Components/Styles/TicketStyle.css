@@ -1,0 +1,28 @@
+.Ticket-component {
+  max-width: 500px;
+  margin: 10px auto;
+  background: #f4f7f8;
+  border-radius: 8px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 20px;
+}
+
+.Ticket-component h2 {
+  margin-bottom: 10px;
+}
+
+.Ticket-component p {
+  margin-bottom: 8px;
+}
+
+.Ticket-component p:last-child {
+  margin-bottom: 0;
+}
+
+.Ticket-component span {
+  font-weight: bold;
+}
+
+.Ticket-component span.discount {
+  color: #1abc9c;
+}

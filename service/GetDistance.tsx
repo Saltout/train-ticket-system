@@ -8,7 +8,6 @@ export async function getDistance(startCity: String, endCity: String) {
     },
   };
 
-  console.log(url);
   try {
     const response = await fetch(url, options);
     const result = await response.json();

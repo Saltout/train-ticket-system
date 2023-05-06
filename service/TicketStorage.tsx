@@ -6,6 +6,6 @@ export function addTicket(value: Ticket) {
   tickets.push(value);
 }
 
-export function getTickets() {
+export function getTickets(): Ticket[] {
   return tickets;
 }

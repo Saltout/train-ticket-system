@@ -1,8 +1,10 @@
 import { TicketValues } from '../Model/TicketValues';
-import { getCitiesData } from '../Data/Data';
+import { getCitiesData } from '../Data/Cities';
 import { getDistance } from './GetDistance';
 import { calculatePrice } from './CalculatePrice';
 import { getTravelTime } from './CalculateTravelTime';
+import * as TicketSorage from './TicketStorage';
+import { renderTicket } from '../Components/TicketComponent';
 
 export function Handle(values: TicketValues) {
   const destination = values.destinations;
@@ -16,11 +18,16 @@ export function Handle(values: TicketValues) {
     const distance = getDistance(start, end);
 
     distance.then((result) => {
-      console.log(result);
       const price = calculatePrice(result, passengerType);
       const time = getTravelTime(result);
-      console.log(price);
-      console.log(time);
+      TicketSorage.addTicket({
+        start: destination.startDestination,
+        end: destination.endDestination,
+        price: price,
+        travelTime: time,
+        discount: passengerType,
+      });
+      console.table(TicketSorage.getTickets());
     });
   }
 }

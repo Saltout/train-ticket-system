@@ -7,7 +7,7 @@ const milesConv = 1.60934;
 export function calculatePrice(
   distanceData: JSON,
   passengerType: PassengerType
-): Number {
+): number {
   const distance = Number(distanceData['data']) * milesConv;
 
   let price = distance * priceForKilometer;
