@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { renderTicket } from './Components/TicketComponent';
 import TicketPageButton from './Components/TicketPageButtonComponent';
 import * as TicketStorage from './service/TicketStorage';
+import './Styles/TicketPage.css';
 
 export default function TicketPage() {
   const tickets = TicketStorage.getTickets();
