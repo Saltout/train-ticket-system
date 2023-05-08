@@ -3,11 +3,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputForm from './Components/InputForm';
 import TicketPageButton from './Components/TicketPageButtonComponent';
+import SubmitPopup from './Components/SubmitPopup';
 import { Destinations } from './Model/Destinations';
 import { TicketValues } from './Model/TicketValues';
 import { PassengerType } from './Model/PassengerType';
 import { Handle } from './service/TicketSubmitService';
-import './Styles/style.css';
+import { getCitiesData } from './Data/Cities';
+
+const closePopupInSeconds = 1000;
 
 export default function InputFormContainer() {
   const [destination, setDestination] = useState<Destinations>({
@@ -16,6 +19,8 @@ export default function InputFormContainer() {
   });
 
   const [passengerType, setPassengerType] = useState(PassengerType.NONE);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupHeader, setPopupHeader] = useState('Success');
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,6 +29,17 @@ export default function InputFormContainer() {
       destinations: destination,
       passengerType: passengerType,
     };
+
+    if (ValidateInput(destination)) {
+      setPopupHeader('Success');
+    } else {
+      setPopupHeader('Error: Invalid destination');
+    }
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, closePopupInSeconds);
+
     Handle(ticketValues);
   };
 
@@ -54,6 +70,17 @@ export default function InputFormContainer() {
       <div className="ticketPageButton">
         <TicketPageButton label="Tickets" onClick={handleClick} />
       </div>
+      <div>
+        <SubmitPopup trigger={showPopup} header={popupHeader} />
+      </div>
     </div>
   );
+}
+
+function ValidateInput(values: Destinations): boolean {
+  const cities = getCitiesData();
+
+  const start = cities.get(values.startDestination.toLocaleLowerCase());
+  const end = cities.get(values.endDestination.toLocaleLowerCase());
+  return start != null && end != null;
 }
